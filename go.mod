@@ -1,3 +1,3 @@
-module example.com/bolt_tolker
+module github.com/oshikawatkm/bolt_talker
 
 go 1.13

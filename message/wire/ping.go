@@ -1,4 +1,4 @@
-package lnwire
+package wire
 
 type PingPayload []byte
 
@@ -13,9 +13,16 @@ func NewPing(numBytes uint16) *Ping {
 	}
 }
 
-func Decode(r io.Reader, prev uint32) error {
+func (p *Ping) Decode(r io.Reader, prev uint32) error {
 	return ReadElements(r,
 		&p.NumPongBytes,
 		&p.PaddingBytes
+	)
+}
+
+func (p *Ping) Encode(w io.Witer, prev uint32) error {
+	return WiteElemets(w,
+		p.NumPongBytes,
+		p.PaddingBytes
 	)
 }

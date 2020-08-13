@@ -7,6 +7,7 @@ import (
 	"os"
 
 	"github.com/oshikawatkm/bolt_talker/pkg/network"
+	"github.com/oshikawatkm/bolt_talker/wire"
 )
 
 func main() {
@@ -62,7 +63,7 @@ func main() {
 func message_handler() {
 
 	for onlien == true {
-		msg := 
+		msg := wire.ReadMessage
 		switch msg {
 		case *wire.Pong:
 			log.Printf("[!] PONG MESSAGE")

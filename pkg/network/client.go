@@ -3,6 +3,8 @@ package network
 import (
 	"log"
 	"net"
+
+	"github.com/oshikawatkm/bolt_talker/message"
 )
 
 type Client struct {
@@ -18,8 +20,8 @@ func NewClient(address string) *Client {
 	return &Client{Conn: conn}
 }
 
-// func (c *Client) SendMessage(msg protocol.Message) (int, error) {
-// 	message := common.NewMessage(msg.Command(), msg.Encode())
-// 	log.Printf("send		: %s", string(message.Command[:]))
-// 	return c.Conn.Wirte(message.Encode())
-// }
+func (c *Client) SendMessage(msg message.Message) (int, error) {
+	message := common.NewMessage(msg.Command(), msg.Encode())
+	log.Printf("send		: %s", string(message.Command[:]))
+	return c.Conn.Wirte(message.Encode())
+}
